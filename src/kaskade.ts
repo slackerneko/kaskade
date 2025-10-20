@@ -1,23 +1,12 @@
-import react from 'react';
+import { type JSX } from 'react';
 
-export default {
-  create: (node: react.ReactNode, callback) => {},
-  apply: () => '',
+function errorForFn(name: string) {
+  return new Error(`Unexpected 'kaskade.${name}' call at runtime. Styles must be compiled by 'kaskade/rolldown-plugin'.`);
 }
 
-export const oklch = (l: number, c: number, h: number) => `oklch(${l} ${c} ${h})`;
+type Component = (props: any) => JSX.Element;
 
-export const center = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
-
-export const grid = ({
-  columns = 'repeat(auto-fit, minmax(150px, 1fr))',
-  gap = '10px',
-}) => ({
-  display: 'grid',
-  gridTemplateColumns: columns,
-  gridGap: gap,
-});
+export default {
+  create: (component: Component, callback: (props: any) => any ) => {},
+  apply: () => '',
+}

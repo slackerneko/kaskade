@@ -1,4 +1,4 @@
-import kd, { oklch, center, grid } from './kaskade';
+import kd from './kaskade';
 import { MyButton } from './MyButton';
 
 type Props = {
@@ -18,20 +18,15 @@ export function Page({ color }: Props) {
     }) => ({
       base: {
         [container('width > 15em')]: {
-          ...grid({
-            columns: 'repeat(auto-fit, minmax(150px, 1fr))',
-            gap: '10px'
-          }),
           padding: '10px',
           borderRadius: '5px',
           boxShadow: '0 0 10px rgba(0,0,0,0.1)'
         },
-        ...center,
         [children(['div'])]: { // base > div
           fontSize: '14px',
           fontWeight: 'bold',
           backgroundColor: {
-            default: oklch(1,2,3),
+            default: '#fafafa',
             ':hover': bool && '#007bff', // data-has-bool={bool || undefined}
           }
         },
